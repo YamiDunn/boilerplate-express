@@ -8,13 +8,13 @@ app.get("/",(req, res) => {
 });
 
 app.get("/json",(req, res) => {
-    const response = {"message":""};    
-    if (process.env.MESSAGE_STYLE === "uppercase") {
+    const response = {"message":"hello json"};    
+    if (process.env.MESSAGE_STYLE === 'uppercase') {
         res.statusCode = 200;
-        response.message = "Hello Json".toUpperCase();
+        response.message = response.message.toUpperCase();
     }else {
-        res.statusCode = 201;
-        response.message = "Hello Json";
+       res.statusCode = 201;
+       response.message = "Hello Json";
     };
     return res.json(response);
 });
