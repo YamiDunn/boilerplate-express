@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { response } = require('express');
 let express = require('express');
 let app = express();
 console.log("Hello World");
@@ -15,7 +14,7 @@ app.get("/json",(req, res) => {
         response.message = "Hello Json".toUpperCase();
     }else {
         res.statusCode = 201;
-        response.message = "Hello world";
+        response.message = "Hello Json";
     };
     return res.json(response);
 });
