@@ -8,16 +8,17 @@ app.get("/",(req, res) => {
 });
 
 app.get("/json",(req, res) => {
-    const response = {"message":"hello json"};    
-    if (process.env.MESSAGE_STYLE === 'uppercase') {
+    const response = {"message":""};    
+    if (process.env.MESSAGE_STYLE === "uppercase") {
         res.statusCode = 200;
-        response.message = response.message.toUpperCase();
+        response.message = "Hello Json".toUpperCase();
     }else {
-       res.statusCode = 201;
-       response.message = "Hello Json";
+        res.statusCode = 201;
+        response.message = "Hello json";
     };
     return res.json(response);
 });
+
 
 app.use("/public", express.static(__dirname + "/public"));
 
