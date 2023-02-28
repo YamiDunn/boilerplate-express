@@ -36,9 +36,10 @@ next();
 });
 
 app.get("/:word/echo", (req,res,next)=> {
-    req.params = {"echo" : "word"}
-    res.send(req.params);
-} );
+const {word} = req.params;
+res.json({echo: word});
+
+});
 
 app.use("/public", express.static(__dirname + "/public"));
 
