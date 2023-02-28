@@ -35,6 +35,11 @@ next();
     res.send({"time" : req.time});
 });
 
+app.get("/:word/echo", (req,res,next)=> {
+    req.params = {"echo" : "word"}
+    res.send(req.params);
+} );
+
 app.use("/public", express.static(__dirname + "/public"));
 
 
