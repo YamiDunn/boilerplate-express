@@ -1,3 +1,4 @@
+//const mySecret = process.env['MESSAGE_STYLE'];
 require('dotenv').config();
 let express = require('express');
 let app = express();
@@ -20,14 +21,19 @@ app.get("/json",(req, res) => {
     return res.json(response);
 });*/
 
+/*
 app.get("/json",(req, res, next) => {
 const response = req.method + " " + req.path + " - " + req.ip;
 console.log(response);
 next();
+});*/
+
+app.get("/now", (req, res, next) => {
+req.time = new Date().toString();
+next();
+}, (req, res) => {
+    res.send({"time" : req.time});
 });
-
-
-
 
 app.use("/public", express.static(__dirname + "/public"));
 
