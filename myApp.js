@@ -7,6 +7,7 @@ app.get("/",(req, res) => {
     res.sendFile(__dirname + "/views/index.html");
 });
 
+/*
 app.get("/json",(req, res) => {
     const response = {"message":""};    
     if (process.env.MESSAGE_STYLE === "uppercase") {
@@ -17,7 +18,15 @@ app.get("/json",(req, res) => {
         response.message = "Hello json";
     };
     return res.json(response);
+});*/
+
+app.get("/json",(req, res, next) => {
+const response = req.method + " " + req.path + " - " + req.ip;
+console.log(response);
+next();
 });
+
+
 
 
 app.use("/public", express.static(__dirname + "/public"));
