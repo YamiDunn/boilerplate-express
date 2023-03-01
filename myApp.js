@@ -38,7 +38,11 @@ next();
 app.get("/:word/echo", (req,res,next)=> {
 const {word} = req.params;
 res.json({echo: word});
+});
 
+app.get("/name?first=firstname&last=lastname", (req,res) =>{
+const {first: firstName, last: lastName} = req.query;
+res.json({name: '${firstName} ${lastName}'});
 });
 
 app.use("/public", express.static(__dirname + "/public"));
